@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>simple snake game</title>
+	<link href="https://fonts.googleapis.com/css?family=Notable&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class='header'>
+	SIMPLE SNAKE GAME
+    </div>
+	
+	<div class='main-container'>
+		<div class='left-box box'>
+		</div>
+		<div class='center-box box'>
+			<div id='board'>
+				
+			</div>
+			<div id='game-over'> 
+				<div id='score-box'>
+				<p></p>
+				</div>			
+			</div>
+			<div id='menu'>
+			<ul class='menu-list'>
+				<li class='menu-item-start'><button id='startBtn'>START</button></li>
+				<li class='menu-item'>difficulty: 
+				<p data-difficulty='easy' class='difficulty-option'>easy</p>
+				<p data-difficulty='medium' class='difficulty-option'>medium</p>
+				<p data-difficulty='strong' class='difficulty-option'>pstrong</p>
+				<li class='menu-item'><p>going through walls: </p><input id='going-through' type='checkbox'></li>
+			</ul>
+			</div>
+		</div>
+		<div class='right-box box'>
+		</div>
+	</div>
+</body>
+</html>
