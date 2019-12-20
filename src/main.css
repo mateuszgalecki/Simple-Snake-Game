@@ -8,6 +8,8 @@ body {
 	font-family: 'Anton', sans-serif;
 }
 
+/* font-family: 'MedievalSharp', cursive; */
+
 /* site styles */
 
 .header {
@@ -15,10 +17,23 @@ body {
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 80px;
-	line-height: 80px;
+	height: 60px;
+	line-height: 60px;
 	text-align: center;
-	background-color: #00FA81;
+	background-color: #00C288;
+	font-size: 26px;
+	color: #174532;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	background-color: #00C288;
 	font-size: 26px;
 	color: #174532;
 }
@@ -28,13 +43,14 @@ body {
 }
 
 .box {
-	padding-top: 80px;
+	padding-top: 60px;
+	padding-bottom: 60px;
 }
 
 .left-box, .right-box {
 	width: 15vw;
 	height: 100vh;
-	background-color: green;
+	background-color: #00C288;
 }
 
 
@@ -43,6 +59,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #008F6B;
 }
 
 #board {
@@ -51,7 +68,7 @@ body {
 	height: 50vw;
 	max-width: calc(100vh - 120px);
 	max-height: calc(100vh - 120px);
-	background-color: white;
+	background-color: #B8FFD9;
 	border: 1px solid #011F00;
 }
 
@@ -60,11 +77,12 @@ body {
 	height: 50vw;
 	max-width: calc(100vh - 120px);
 	max-height: calc(100vh - 120px);
-	border: 1px solid #011F00;
+	/* border: 1px solid #011F00; */
+	border: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #FFC7E1;
+	background-color: #006B57;
 }
 
 /* menu styles */
@@ -74,14 +92,15 @@ ul {
 	font-size: 150%;
 	max-height: 100%;
 	width: 60%;
-	font-family: 'MedievalSharp', cursive;
-	color: #FF47AC;
+	font-family: 'Anton', sans-serif;
+	color: #002C38;
 
 }
 
 li {
 	display: flex;
 	justify-content: center;
+	cursor: default;
 }
 
 .menu-item-start {
@@ -90,9 +109,9 @@ li {
 
 button {
 	font-size: 150%;
-	font-family: 'MedievalSharp', cursive;
-	color: #FF47AC;
-	background-color: #FFC7E1;
+	font-family: 'Anton', sans-serif;
+	color: #002C38;
+	background-color: #006B57;
 	border: none;
 	outline: none;
 }
@@ -115,7 +134,6 @@ input {
 .checkbox-container {
 	display: flex;
 	position: relative;
-	
 }
 
 input[type='checkbox'] {
@@ -131,7 +149,7 @@ input[type='checkbox'] {
 	position: absolute;
 	height: 1.2rem;
 	width: 1.2rem;
-	background-color: #FF47AC;
+	background-color: #002C38;
 	margin-top: 0.05rem;
 }
 
@@ -157,11 +175,6 @@ input[type='checkbox'] {
 	text-shadow: 0px 0px 14px #AAA214;
 }
 
-.list {
-	height: 1.5em;
-	width: 1.5em;
-}
-
 
 /* game over screen styles */
 
@@ -171,8 +184,8 @@ input[type='checkbox'] {
 	height: 50vw;
 	max-width: calc(100vh - 120px);
 	max-height: calc(100vh - 120px);
-	background-color: #FFC7E1;
-	border: 1px solid #011F00;
+	background-color: #006B57;
+	border: none;
 	justify-content: center;
 	align-items: center;
 }
@@ -180,7 +193,7 @@ input[type='checkbox'] {
 #score-box {
 	/* width: 30%; */
 	/* height: 15%; */
-	color: white;
+	color: #002C38;
 	text-align: center;
 }
 
@@ -191,14 +204,14 @@ input[type='checkbox'] {
 	/* height: calc(50% - 10px); */
 	width: 5%;
 	height: 5%;
-	border: 1px solid white;
-	background-color: white;
+	border: 1px solid #B8FFD9;
+	background-color: #B8FFD9;
 	float: left;
 	font-size: 50%;
 }
 
 .snake-head-left {
-	background-color: red;
+	background-color: #8A0500;
 	position: relative;
 	border-top-left-radius: 50%;
 	border-bottom-left-radius: 50%;
@@ -231,7 +244,7 @@ input[type='checkbox'] {
 
 
 .snake-head-right {
-	background-color: red;
+	background-color: #8A0500;
 	position: relative;
 	border-top-right-radius: 50%;
 	border-bottom-right-radius: 50%;
@@ -263,7 +276,7 @@ input[type='checkbox'] {
 }
 
 .snake-head-up {
-	background-color: red;
+	background-color: #8A0500;
 	position: relative;
 	border-top-right-radius: 50%;
 	border-top-left-radius: 50%;
@@ -296,7 +309,7 @@ input[type='checkbox'] {
 
 
 .snake-head-down {
-	background-color: red;
+	background-color: #8A0500;
 	position: relative;
 	border-bottom-right-radius: 50%;
 	border-bottom-left-radius: 50%;
@@ -328,12 +341,12 @@ input[type='checkbox'] {
 }
 
 .snake-cell {
-	background-color: pink;
-	border: 1px solid pink;
+	background-color: #125200;
+	border: 1px solid #125200;
 }
 
 .coin {
-	background-color: gold;
+	background-color: #E0C200;
 	border-radius: 50%;
 }
 

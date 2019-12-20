@@ -89,7 +89,7 @@ const Game = {
 					this.previousSnakePosition = this.snakePosition;
 					this.snakeTail.unshift(this.previousSnakePosition);
 					console.log(this.snakePosition);
-					if (this.goingThroughWalls && this.snakePosition < 20) {
+					if (this.goingThroughWalls && this.snakePosition < 21) {
 						let wentThroughWallPosition = this.snakePosition + 380;
 						this.snakePosition = wentThroughWallPosition;
 						console.log(wentThroughWallPosition);
@@ -201,7 +201,7 @@ const Game = {
 		console.log(this.snakePosition);
 		// checking if crashed with wall
 		if (!this.goingThroughWalls) {
-			if (this.snakePosition < 0 || this.snakePosition > 400) {
+			if (this.snakePosition < 1 || this.snakePosition > 400) {
 			this.stopGame();
 		};
 		let previousColumn = Number(document.querySelector(`.cell${this.previousSnakePosition}`).dataset.column);
