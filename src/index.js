@@ -29,6 +29,8 @@ for (let i = 0; i < 20; i++) {
 let interval;
 const menuBoard = document.getElementById('menu');
 const gameBoard = document.getElementById('board');
+const gameOverBoard = document.getElementById('game-over');
+const difficulties = document.querySelectorAll('p.difficulty-option');
 
 
 const Game = {
@@ -87,7 +89,7 @@ const Game = {
 					this.previousSnakePosition = this.snakePosition;
 					this.snakeTail.unshift(this.previousSnakePosition);
 					console.log(this.snakePosition);
-					if (this.goingThroughWalls && this.snakePosition < 21) {
+					if (this.goingThroughWalls && this.snakePosition < 20) {
 						let wentThroughWallPosition = this.snakePosition + 380;
 						this.snakePosition = wentThroughWallPosition;
 						console.log(wentThroughWallPosition);
@@ -172,10 +174,10 @@ const Game = {
 		let snakeSpeed;
 		switch(this.difficulty) {
 			case('easy'):
-			snakeSpeed = 250;
+			snakeSpeed = 300;
 			break;
 			case('medium'):
-			snakeSpeed = 150;
+			snakeSpeed = 120;
 			break;
 			case('strong'):
 			snakeSpeed = 30;
@@ -196,6 +198,7 @@ const Game = {
 		this.snakeMoves();
 	},
 	checkIfCrashed() {
+		console.log(this.snakePosition);
 		// checking if crashed with wall
 		if (!this.goingThroughWalls) {
 			if (this.snakePosition < 0 || this.snakePosition > 400) {
@@ -228,20 +231,27 @@ const Game = {
 	},
 	stopGame() {
 		console.log('crashed!');
-		const gameOverBoard = document.getElementById('game-over');
 		const scoreBox = document.getElementById('score-box');
-		scoreBox.children[0].innerText = this.score;
+		scoreBox.children[0].innerText = 'Your score is: ' + this.score;
 		gameOverBoard.style.display = 'flex';
-		board.style.display = 'none';
+		// board.style.display = 'none';
+		gameBoard.classList.remove('show');
 		this.hasCrashed = true;
 		console.log(this.hasCrashed);
+		
+		// this.snakeTail.forEach((tailPart) => {
+			// let tailCell = document.querySelector(`.cell${tailPart}`);
+			// tailCell.classList.remove('snake-cell');
+			// console.log(tailCell);
+		// });
+		// let coinCell = document.querySelector(`.cell${this.coinPos}`);
+		// coinCell.classList.remove('coin');
 	}
 }
 
 
 // handling the difficulty options
 
-const difficulties = document.querySelectorAll('p.difficulty-option');
 
 difficulties.forEach((difficulty) => {
 	console.log(difficulty);
@@ -264,22 +274,63 @@ difficulties.forEach((difficulty) => {
 const startBtn = document.getElementById('startBtn');
 startBtn.onclick = (event) => {
 	menuBoard.classList.add('hide');
-	
 	gameBoard.classList.add('show');
 	Game.snakeMoves();
+	difficulties.forEach((difficulty) => {
+		difficulty.classList.remove('checked');
+	})
 }
 
+// handling the going through walls option
 
 const goingThroughWallsInput = document.getElementById('going-through');
 goingThroughWallsInput.onclick = (event) => {
 	if (event.target.checked) {
 		Game.goingThroughWalls = true;
+		event.target.classList.add('checkbox-checked')
 	} else {
 		Game.goingThroughWalls = false;
+		event.target.classList.remove('checkbox-checked')
 	};
 };
 
+// handling the back button
 
+const backBtn = document.getElementById('backBtn');
+backBtn.onclick = (event) =>{
+	Game.snakeTail.forEach((tailPart) => {
+			let tailCell = document.querySelector(`.cell${tailPart}`);
+			tailCell.classList.remove('snake-cell');
+			console.log(tailCell);
+		});
+	let coinCell = document.querySelector(`.cell${Game.coinPos}`);
+	coinCell.classList.remove('coin');
+	let headCell = document.querySelector(`.cell${Game.snakePosition}`);
+	if (headCell === null) {
+		console.log('anything');
+	} else {
+		headCell.classList.forEach((cls) => {
+		if (cls.includes('snake')) {
+			headCell.classList.remove(cls);
+		}
+	})};
+	
+	goingThroughWallsInput.checked = false;
+	goingThroughWallsInput.classList.remove('checkbox-checked');
+	Game.snakeDirection = 'left';
+	Game.snakeLenght = 5;
+	Game.snakePosition = 316;
+	Game.previousSnakePosition = 317;
+	Game.snakeTail = [];
+	Game.score = 0;
+	Game.hasCrashed = false;
+	Game.shouldIMakeACoin = true;
+	Game.coinPos = 0;
+	Game.goingThroughWalls = false;
+	Game.difficulty = 'easy';
+	gameOverBoard.style.display = 'none';
+	menuBoard.classList.remove('hide');
+}
 
 
 const keydown = (event) => {
